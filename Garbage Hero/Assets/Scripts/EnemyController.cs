@@ -15,9 +15,10 @@ public class EnemyController : MonoBehaviour
     private bool inStoppingRange;
     private bool inShootingRange;
     private bool currentlyShooting;
+    private int enemyType;
 
     [SerializeField]
-    Sprite damagedSprite;
+    Sprite[] sprites;
     [SerializeField]
     GameObject explosionPrefab;
     [SerializeField]
@@ -28,6 +29,10 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+
+        enemyType = Random.Range(0, 2);
+        if (enemyType == 0) spriteRenderer.sprite = sprites[0];
+        else spriteRenderer.sprite = sprites[2];
 
         speed = Random.Range(.6f, 1.1f);
         shootingRange = Random.Range(1f, 1.5f);
@@ -46,8 +51,8 @@ public class EnemyController : MonoBehaviour
         if (!inStoppingRange) MoveTowardsPlayer();
         else if(rigidBody.velocity.magnitude > 0) SlowMovement();
 
-        if (inShootingRange && !currentlyShooting) { InvokeRepeating("FireLaser", 0.5f, 1.5f); currentlyShooting = true; }
-        else if (!inShootingRange && currentlyShooting) { CancelInvoke("FireLaser"); currentlyShooting = false; }
+        //if (inShootingRange && !currentlyShooting) { InvokeRepeating("FireLaser", 0.5f, 1.5f); currentlyShooting = true; }
+        //else if (!inShootingRange && currentlyShooting) { CancelInvoke("FireLaser"); currentlyShooting = false; }
     }
 
     void SetDistance()
@@ -75,7 +80,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
-        spriteRenderer.sprite = damagedSprite;
+        spriteRenderer.sprite = (enemyType == 0) ? sprites[1] : sprites[3];
         StartCoroutine(TriggerExplosion());
     }
 
