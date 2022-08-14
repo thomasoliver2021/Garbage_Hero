@@ -99,7 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f859bcc75bd5c64795e775fe1c4417e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedSprite: {fileID: 21300000, guid: fcb9b864225930a4492b82edd1a41b89, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 770cccd2599907a419ce336e053005a9, type: 3}
+  - {fileID: 21300000, guid: fcb9b864225930a4492b82edd1a41b89, type: 3}
+  - {fileID: 21300000, guid: 446b94d86b48a044da3eb398dd680785, type: 3}
+  - {fileID: 21300000, guid: 3251d1fb55dc59c4c8bfaa2588d945e7, type: 3}
   explosionPrefab: {fileID: 248642364822509408, guid: be33c40e49832c34d9c36374b33ccb96, type: 3}
   laserPrefab: {fileID: 5447597299093554190, guid: 6c191a533aa6749428fd957e76797daa, type: 3}
 --- !u!50 &1501600578233553461
