@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class trashBehavior : MonoBehaviour
+public class TrashBehavior : MonoBehaviour
 {
     // Speed at which the trash rotates. MAKE PRIVATE, public rn for testing
     public float rotationSpeed = 10;
@@ -14,7 +14,7 @@ public class trashBehavior : MonoBehaviour
     void Start()
     {
         // Pick a random trash to be
-        int spriteTexture = Random.Range(0, trashSprites.Length - 1);
+        int spriteTexture = Random.Range(0, trashSprites.Length);
 
         // Set sprite
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
