@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
+    <Compile Include="Assets\Scripts\AsteroidBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

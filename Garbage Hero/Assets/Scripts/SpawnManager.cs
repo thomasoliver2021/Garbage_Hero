@@ -23,7 +23,7 @@ public class SpawnManager : MonoBehaviour
     {
         while(true){
             // Pick a prefab to spawn
-            int choice = Random.Range(1, 10);
+            int choice = Random.Range(1, 11); //random has an exclusive upper end, so if you want 10 to be an option must end with 11
 
             // 60% chance to spawn trash
             int prefabChoice = 0;

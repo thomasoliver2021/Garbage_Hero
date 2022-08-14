@@ -51,8 +51,8 @@ public class EnemyController : MonoBehaviour
         if (!inStoppingRange) MoveTowardsPlayer();
         else if(rigidBody.velocity.magnitude > 0) SlowMovement();
 
-        if (inShootingRange && !currentlyShooting) { InvokeRepeating("FireLaser", 0.5f, 1.5f); currentlyShooting = true; }
-        else if (!inShootingRange && currentlyShooting) { CancelInvoke("FireLaser"); currentlyShooting = false; }
+        //if (inShootingRange && !currentlyShooting) { InvokeRepeating("FireLaser", 0.5f, 1.5f); currentlyShooting = true; }
+        //else if (!inShootingRange && currentlyShooting) { CancelInvoke("FireLaser"); currentlyShooting = false; }
     }
 
     void SetDistance()
