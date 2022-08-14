@@ -20,13 +20,26 @@ public class PlayerDamagedBehavior : MonoBehaviour
         livesLeft = 3;
     }
 
-    void OnLaserBulletHit()
+    void TakeDamage()
     {
         //handle collision to garbage if any
 
         livesLeft--;
         if (livesLeft > 0) StartCoroutine(FlashRed());
         else StartCoroutine(Die());
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "enemy")
+        {
+            TakeDamage();
+        }
+    }
+
+    void OnLaserBulletHit()
+    {
+        TakeDamage();
     }
 
     IEnumerator FlashRed()
