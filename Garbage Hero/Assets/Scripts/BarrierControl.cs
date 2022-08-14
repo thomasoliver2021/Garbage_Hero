@@ -5,13 +5,19 @@ using UnityEngine;
 public class BarrierControl : MonoBehaviour
 {
     List<SpriteRenderer> trashInBarrier;
+    SpriteRenderer[] toShoot;
     GameObject player;
+    [SerializeField] Sprite[] shotSprites;
+
+    bool shooting = false;
+    bool shot = false;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
         trashInBarrier = new List<SpriteRenderer>();
+        toShoot = new SpriteRenderer[3];
     }
 
     void Update()
@@ -31,6 +37,20 @@ public class BarrierControl : MonoBehaviour
             theta += 0.6f;
             // Increment the radius
             radius += 0.01f;
+        }
+
+        if(Input.GetKeyDown("space")){
+            if(trashInBarrier.Count >= 3){
+                for(int i = 0; i < 3; i++){
+                    toShoot[i] = trashInBarrier[trashInBarrier.Count - 1];
+                    toShoot[i].sprite = shotSprites[(int)char.GetNumericValue(toShoot[i].sprite.name[6])];
+                    trashInBarrier.RemoveAt(trashInBarrier.Count - 1);
+                }
+            }
+        }
+
+        foreach(var trash in toShoot){
+
         }
 
     }
