@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Change the speed of the ship
-    // MAKE PRIVATE LATER, public just for testing rn!
-    public float speed = 0.7f;
+    float speed = 0.7f;
     void Update(){
         // Get mouse position
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);

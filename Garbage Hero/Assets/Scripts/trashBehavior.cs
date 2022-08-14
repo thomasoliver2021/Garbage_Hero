@@ -6,6 +6,13 @@ public class TrashBehavior : MonoBehaviour
 {
     // Speed at which the trash rotates
     float rotationSpeed;
+
+    // Speed at which the trash moves
+    float moveSpeed = 0.2f;
+
+    // Direction trash moves in
+    private Vector2 movementDirection;
+
     
     [SerializeField]
     // Array of trash sprites
@@ -26,8 +33,9 @@ public class TrashBehavior : MonoBehaviour
         if(rotationSpeed < 10){
             rotationSpeed += 10;
             rotationSpeed *= -1;
-            print(rotationSpeed);
         }
+
+        movementDirection = GameObject.FindGameObjectWithTag("Player").transform.position - gameObject.transform.position;
 
     }
 
@@ -35,5 +43,8 @@ public class TrashBehavior : MonoBehaviour
     {
         // Slowly rotate
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+        
+        transform.Translate(movementDirection * Time.deltaTime * moveSpeed, Space.World);
+
     }
 }
