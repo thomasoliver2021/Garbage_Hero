@@ -36,12 +36,32 @@ public class SpawnManager : MonoBehaviour
                 prefabChoice = 2;
             }
 
-            // Pick a random spot on screen to spawn an object
-            // Hard-coded for rn just to test spawning
-            float xPos = Random.Range(-1.3f, 1.3f);
-            float yPos = Random.Range(-0.8f, 0f);
-
-            Vector3 position = new Vector3(xPos, yPos, 0);
+            // Pick a random side to spawn on
+            choice = Random.Range(0, 4);
+            float xPos = 0;
+            float yPos = 0;
+            // Top
+            if(choice == 0){
+                xPos = Random.Range(0f, 1f);
+                yPos = 1.1f;
+            }
+            // Bottom
+            if(choice == 1){
+                xPos = Random.Range(0f, 1f);
+                yPos = -0.1f;
+            }
+            // Left
+            if(choice == 2){
+                xPos = -0.1f;
+                yPos = Random.Range(0f, 1f);
+            }
+            // Right
+            if(choice == 3){
+                xPos = 1.1f;
+                yPos = Random.Range(0f, 1f);
+            }
+            // Adjust the xPos and yPos to be relative to the camera viewport
+            Vector2 position =  Camera.main.ViewportToWorldPoint(new Vector2(xPos, yPos));
 
             // Spawn the object
             Instantiate(prefabs[prefabChoice], position, Quaternion.identity);
