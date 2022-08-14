@@ -12,8 +12,7 @@ public class TrashBehavior : MonoBehaviour
 
     // Direction trash moves in
     Vector2 movementDirection;
-
-    bool inGrabbingRange = false;
+    bool grabbed;
     float grabbingRange = 0.5f;
     GameObject player;
 
@@ -52,18 +51,29 @@ public class TrashBehavior : MonoBehaviour
         // Slowly rotate
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
         
-        transform.Translate(movementDirection * Time.deltaTime * moveSpeed, Space.World);
+        if(grabbed){
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 10);
+            float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
+            if (distance < 0.05){
+                moveToBarrier();
+            }
+        }
+        else{
+            transform.Translate(movementDirection * Time.deltaTime * moveSpeed, Space.World);
+        }
 
         if (Input.GetMouseButton(0))
         {
             float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
-            if (distance < grabbingRange){
-                moveToBarrier();
+            if (distance < grabbingRange && !grabbed){
+                grabbed = true;
+                spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];
             }
         }
     }
 
     void moveToBarrier(){
-        spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];
+        player.GetComponent<BarrierControl>().addTrashToArray(spriteRenderer);
+        enabled = false;
     }
 }

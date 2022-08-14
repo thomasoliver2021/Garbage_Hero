@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 324959224}
   - component: {fileID: 324959226}
   - component: {fileID: 324959229}
+  - component: {fileID: 324959230}
   - component: {fileID: 324959228}
   - component: {fileID: 324959227}
   m_Layer: 0
@@ -223,7 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bff6a82a08b0e94ea119d97be65bddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.7
 --- !u!61 &324959227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -286,6 +286,18 @@ MonoBehaviour:
   normalPlayer: {fileID: 21300000, guid: 3a9687c4d60c96c4ba1475f95b37b3c1, type: 3}
   damagedPlayer: {fileID: 21300000, guid: 4d0ecbd66ef34e247b4f9624cc481420, type: 3}
   explosionPrefab: {fileID: 248642364822509408, guid: be33c40e49832c34d9c36374b33ccb96, type: 3}
+--- !u!114 &324959230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324959223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ebe3ba7a5fd20545ab658519bf7478f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
