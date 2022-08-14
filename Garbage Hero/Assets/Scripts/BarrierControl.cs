@@ -12,6 +12,8 @@ public class BarrierControl : MonoBehaviour
     bool shooting = false;
     bool shot = false;
 
+    float shootSpeed = 0.2f;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -47,10 +49,13 @@ public class BarrierControl : MonoBehaviour
                     trashInBarrier.RemoveAt(trashInBarrier.Count - 1);
                 }
             }
+            shooting = true;
         }
 
-        foreach(var trash in toShoot){
-
+        if(shooting){
+            foreach(var trash in toShoot){
+                trash.transform.position = Vector2.MoveTowards(trash.transform.position, player.transform.position, shootSpeed / 15);
+            }
         }
 
     }

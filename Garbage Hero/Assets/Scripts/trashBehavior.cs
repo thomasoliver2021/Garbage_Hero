@@ -52,7 +52,7 @@ public class TrashBehavior : MonoBehaviour
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
         
         if(grabbed){
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 10);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 15);
             float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
             if (distance < 0.05){
                 moveToBarrier();
