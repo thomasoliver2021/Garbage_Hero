@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TrashBehavior : MonoBehaviour
 {
-    // Speed at which the trash rotates. MAKE PRIVATE, public rn for testing
-    public float rotationSpeed = 10;
+    // Speed at which the trash rotates
+    float rotationSpeed;
     
     [SerializeField]
     // Array of trash sprites
@@ -19,6 +19,16 @@ public class TrashBehavior : MonoBehaviour
         // Set sprite
         SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = trashSprites[spriteTexture];
+
+        // Randomize rotation speed
+        rotationSpeed = Random.Range(0, 20);
+        // Chance to rotate the opposite way
+        if(rotationSpeed < 10){
+            rotationSpeed += 10;
+            rotationSpeed *= -1;
+            print(rotationSpeed);
+        }
+
     }
 
     void Update()

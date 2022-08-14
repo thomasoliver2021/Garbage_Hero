@@ -334,7 +334,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185dde8e316a8ce4e94e2cb267b8adad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trashPrefab: {fileID: 2377885354466544097, guid: 3f0f2badaa5d0be468584a9c9f22a35c, type: 3}
+  prefabs:
+  - {fileID: 2377885354466544097, guid: 3f0f2badaa5d0be468584a9c9f22a35c, type: 3}
+  - {fileID: 2377885354466544097, guid: 3f0f2badaa5d0be468584a9c9f22a35c, type: 3}
+  - {fileID: 2377885354466544097, guid: 3f0f2badaa5d0be468584a9c9f22a35c, type: 3}
 --- !u!4 &637046506
 Transform:
   m_ObjectHideFlags: 0
