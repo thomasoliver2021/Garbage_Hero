@@ -17,20 +17,22 @@ public class TrashBehavior : MonoBehaviour
     float grabbingRange = 0.5f;
     GameObject player;
 
-    
-    [SerializeField]
+    int spriteTexture;
+    SpriteRenderer spriteRenderer;
+
     // Array of trash sprites
-    Sprite[] trashSprites;
+    [SerializeField] Sprite[] trashSprites;
+    [SerializeField] Sprite[] grabbedTrashSprites;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
 
         // Pick a random trash to be
-        int spriteTexture = Random.Range(0, trashSprites.Length);
+        spriteTexture = Random.Range(0, trashSprites.Length);
 
         // Set sprite
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = trashSprites[spriteTexture];
 
         // Randomize rotation speed
@@ -56,10 +58,12 @@ public class TrashBehavior : MonoBehaviour
         {
             float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
             if (distance < grabbingRange){
-                //print("HERE");
+                moveToBarrier();
             }
         }
-        
+    }
 
+    void moveToBarrier(){
+        spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];
     }
 }

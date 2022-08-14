@@ -97,8 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f6bd87da8f78be4da7ac6fd929ce7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
   trashSprites:
   - {fileID: 21300000, guid: 4b8e9349c6bafea4dba84cc1e61826fc, type: 3}
   - {fileID: 21300000, guid: 71c6bb57615f78543b0c29dc3a353d9e, type: 3}
   - {fileID: 21300000, guid: 25073e6caed6fc048b1840c4b456ea00, type: 3}
+  - {fileID: 21300000, guid: 9f868feba5aab47488d805da817a74d5, type: 3}
+  grabbedTrashSprites:
+  - {fileID: 21300000, guid: a9cb8415a07aa4b4ca683869adb88595, type: 3}
+  - {fileID: 21300000, guid: fab374fbe736d9140b0ed26b0464c789, type: 3}
+  - {fileID: 21300000, guid: 76ab666f14676724aacd1cd20e5511b0, type: 3}
+  - {fileID: 21300000, guid: 676bc9b6bb4c8324ebf39004f3fcf7f3, type: 3}
