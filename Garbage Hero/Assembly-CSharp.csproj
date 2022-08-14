@@ -61,6 +61,8 @@
     <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
     <Compile Include="Assets\Scripts\ExplosionBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerDamagedBehavior.cs" />
+    <Compile Include="Assets\Scripts\trashBehavior.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
