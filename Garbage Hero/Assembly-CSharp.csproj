@@ -59,12 +59,13 @@
     <Compile Include="Assets\Scripts\PlayerDamagedBehavior.cs" />
     <Compile Include="Assets\Scripts\ExplosionBehavior.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
-    <Compile Include="Assets\Scripts\trashBehavior.cs" />
+    <Compile Include="Assets\Scripts\TrashBehavior.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\AsteroidBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
     <Compile Include="Assets\Scripts\ChangeScene.cs" />
+    <Compile Include="Assets\Scripts\SoundManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
