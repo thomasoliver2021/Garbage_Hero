@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     // Rate at which something spawns
-    float spawnRate = 5f;
+    float spawnRate = 3f;
     float startTime;
 
     [SerializeField]
@@ -27,17 +27,14 @@ public class SpawnManager : MonoBehaviour
             // Pick a prefab to spawn
             int choice = Random.Range(1, 11); //random has an exclusive upper end, so if you want 10 to be an option must end with 11
             if (Time.time - startTime < 8f) choice = 1; //for first 8 seconds, just spawn trash
-            // 60% chance to spawn trash
+            // 70% chance to spawn trash
             int prefabChoice = 0;
-            /*// 30% chance to spawn an enemy
-            if(choice >= 7 && choice <= 9){
+            // 30% chance to spawn an enemy
+            if(choice > 7 && choice <= 9){
                 prefabChoice = 1;
             }
             // 10% chance to spawn an obstacle
             if(choice == 10){
-                prefabChoice = 2;
-            }*/
-            if(choice > 5){
                 prefabChoice = 2;
             }
 

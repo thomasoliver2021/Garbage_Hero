@@ -55,7 +55,7 @@ public class TrashBehavior : MonoBehaviour
     {
         // Slowly rotate
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
-        if (!spriteRenderer.isVisible && Time.realtimeSinceStartup - startTime > 3f) Destroy(gameObject);
+        if (!spriteRenderer.isVisible && Time.realtimeSinceStartup - startTime > 2f) Destroy(gameObject);
         
         if(grabbed){
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 15);

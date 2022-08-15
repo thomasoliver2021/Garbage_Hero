@@ -102,8 +102,10 @@ public class BarrierControl : MonoBehaviour
                     bullets[i][1].GetComponent<TrashBehavior>().Shoot();
                     bullets[i][2].GetComponent<TrashBehavior>().Shoot();
                     bullets.RemoveAt(i);
+                    shootDirections.RemoveAt(i);
                 }
-
+                player.GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier = bullets.Count * 3;
+                player.GetComponent<PlayerDamagedBehavior>().updateColliderSize();
             }
         }
 
