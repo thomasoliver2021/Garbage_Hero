@@ -5,8 +5,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Change the speed of the ship
-    float speed = 0.9f;
+    float speed;
+    bool stopped;
+
+    private void Start()
+    {
+        speed = 0.9f;
+        stopped = false;
+        GetComponent<SpriteRenderer>().enabled = true;
+    }
     void Update(){
+        if (stopped) return;
+
         // Get mouse position
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -22,5 +32,10 @@ public class PlayerMovement : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // Move the ship towards the mouse
         transform.position = Vector2.MoveTowards(transform.position, mousePosition, acceleration * Time.deltaTime);
+    }
+
+    public void StopPlayer()
+    {
+        stopped = true;
     }
 }
