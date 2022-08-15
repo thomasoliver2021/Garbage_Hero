@@ -28,14 +28,11 @@ public class SpawnManager : MonoBehaviour
             // 60% chance to spawn trash
             int prefabChoice = 0;
             // 30% chance to spawn an enemy
-            /*if(choice >= 7 && choice <= 9){
+            if(choice >= 7 && choice <= 9){
                 prefabChoice = 1;
             }
             // 10% chance to spawn an obstacle
             if(choice == 10){
-                prefabChoice = 2;
-            }*/
-            if(choice > 5){
                 prefabChoice = 2;
             }
 
