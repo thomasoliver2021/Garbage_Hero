@@ -93,7 +93,6 @@ public class EnemyController : MonoBehaviour
 
     public void OnTrashHit()
     {
-        print("HERE");
         Die();
     }
 

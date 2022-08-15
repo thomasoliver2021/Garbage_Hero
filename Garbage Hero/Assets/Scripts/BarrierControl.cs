@@ -93,4 +93,16 @@ public class BarrierControl : MonoBehaviour
         player.GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier = trashInBarrier.Count;
         player.GetComponent<PlayerDamagedBehavior>().updateColliderSize();
     }
+
+    public void scatterTrash(int numToScatter){
+        if(numToScatter > trashInBarrier.Count){
+            numToScatter = trashInBarrier.Count;
+        }
+        for(int i = 0; i < numToScatter; i++){
+            trashInBarrier[trashInBarrier.Count - 1].GetComponent<TrashBehavior>().Scatter();
+            trashInBarrier.RemoveAt(trashInBarrier.Count - 1);
+            GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier = trashInBarrier.Count;
+            GetComponent<PlayerDamagedBehavior>().updateColliderSize();
+        }
+    }
 }

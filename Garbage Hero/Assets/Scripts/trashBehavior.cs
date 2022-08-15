@@ -13,11 +13,13 @@ public class TrashBehavior : MonoBehaviour
     // Direction trash moves in
     Vector2 movementDirection;
     bool grabbed;
+    bool scattered;
     float grabbingRange = 0.5f;
     GameObject player;
 
     int spriteTexture;
     SpriteRenderer spriteRenderer;
+    float opacity = 1.0f;
 
     // Array of trash sprites
     [SerializeField] Sprite[] trashSprites;
@@ -58,6 +60,16 @@ public class TrashBehavior : MonoBehaviour
                 moveToBarrier();
             }
         }
+
+        if(scattered){
+            transform.Translate(movementDirection * Time.deltaTime * moveSpeed * 50, Space.World);
+            if(opacity < 0.001f){
+                Destroy(gameObject);
+            }
+            spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, opacity);
+            opacity -= 0.005f;
+        }
+
         else{
             transform.Translate(movementDirection * Time.deltaTime * moveSpeed, Space.World);
         }
@@ -65,7 +77,7 @@ public class TrashBehavior : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             float distance = Vector2.Distance(transform.position, player.transform.position);
-            if (distance < grabbingRange && !grabbed){
+            if (distance < grabbingRange && !grabbed && !scattered){
                 grabbed = true;
                 spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];
             }
@@ -75,6 +87,14 @@ public class TrashBehavior : MonoBehaviour
     void moveToBarrier(){
         player.GetComponent<BarrierControl>().addTrashToArray(spriteRenderer);
         enabled = false;
+    }
+
+    public void Scatter(){
+        spriteRenderer.sprite = trashSprites[spriteTexture];
+        movementDirection = -(player.transform.position - transform.position);
+        grabbed = false;
+        scattered = true;
+        enabled = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
