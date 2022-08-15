@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerDamagedBehavior : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    CircleCollider2D circleCollider;
     private int livesLeft;
+
+    public int numOfTrashInBarrier;
 
     [SerializeField]
     Sprite normalPlayer;
@@ -17,7 +20,9 @@ public class PlayerDamagedBehavior : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider = GetComponent<CircleCollider2D>();
         livesLeft = 3;
+        numOfTrashInBarrier = 0;
     }
 
     void TakeDamage()
@@ -40,6 +45,18 @@ public class PlayerDamagedBehavior : MonoBehaviour
     void OnLaserBulletHit()
     {
         TakeDamage();
+    }
+
+    public void updateColliderSize(){
+        if(numOfTrashInBarrier == 0){
+            circleCollider.radius = 0.08f;
+        }
+        if(numOfTrashInBarrier == 1){
+            circleCollider.radius = 0.2f;
+        }
+        for(int i = 0; i < numOfTrashInBarrier - 1; i++){
+            circleCollider.radius += (0.2f * i);
+        }
     }
 
     IEnumerator FlashRed()

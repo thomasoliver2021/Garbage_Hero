@@ -90,12 +90,7 @@ public class BarrierControl : MonoBehaviour
     public void addTrashToArray(SpriteRenderer newTrash){
         // Add trash from space into the barrier
         trashInBarrier.Add(newTrash);
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if(collision.collider.tag == "enemy"){
-            collision.gameObject.SendMessage("OnTrashHit");
-        }
+        player.GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier = trashInBarrier.Count;
+        player.GetComponent<PlayerDamagedBehavior>().updateColliderSize();
     }
 }

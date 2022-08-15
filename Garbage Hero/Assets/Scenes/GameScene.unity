@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 324959229}
   - component: {fileID: 324959230}
   - component: {fileID: 324959228}
-  - component: {fileID: 324959227}
+  - component: {fileID: 324959231}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -224,32 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bff6a82a08b0e94ea119d97be65bddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &324959227
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 324959223}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
-  m_EdgeRadius: 0
 --- !u!50 &324959228
 Rigidbody2D:
   serializedVersion: 4
@@ -283,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5093ee7d05c9ef41904bfa20771e5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfTrashInBarrier: 0
   normalPlayer: {fileID: 21300000, guid: 3a9687c4d60c96c4ba1475f95b37b3c1, type: 3}
   damagedPlayer: {fileID: 21300000, guid: 4d0ecbd66ef34e247b4f9624cc481420, type: 3}
   explosionPrefab: {fileID: 248642364822509408, guid: be33c40e49832c34d9c36374b33ccb96, type: 3}
@@ -303,6 +278,22 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1f95425c824e8ba43a5a3e015495906b, type: 3}
   - {fileID: 21300000, guid: 3c068aa68fd67f2499df3608e862df3c, type: 3}
   - {fileID: 21300000, guid: ea036e302b0386744896f281f7ee1c4f, type: 3}
+--- !u!58 &324959231
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 324959223}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.08
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
