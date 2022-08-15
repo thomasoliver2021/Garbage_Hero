@@ -21,7 +21,6 @@ public class LaserBulletBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        collision.gameObject.SendMessage("OnLaserBulletHit");
         Destroy(gameObject);
     }
 }

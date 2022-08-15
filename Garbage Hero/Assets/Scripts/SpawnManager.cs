@@ -29,12 +29,15 @@ public class SpawnManager : MonoBehaviour
             if (Time.time - startTime < 8f) choice = 1; //for first 8 seconds, just spawn trash
             // 60% chance to spawn trash
             int prefabChoice = 0;
-            // 30% chance to spawn an enemy
+            /*// 30% chance to spawn an enemy
             if(choice >= 7 && choice <= 9){
                 prefabChoice = 1;
             }
             // 10% chance to spawn an obstacle
             if(choice == 10){
+                prefabChoice = 2;
+            }*/
+            if(choice > 5){
                 prefabChoice = 2;
             }
 

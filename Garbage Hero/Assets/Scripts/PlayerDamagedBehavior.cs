@@ -80,11 +80,6 @@ public class PlayerDamagedBehavior : MonoBehaviour
         }
     }
 
-    void OnLaserBulletHit()
-    {
-        TakeDamage();
-    }
-
     public void updateColliderSize(){
         if(numOfTrashInBarrier == 0){
             circleCollider.radius = 0.08f;
