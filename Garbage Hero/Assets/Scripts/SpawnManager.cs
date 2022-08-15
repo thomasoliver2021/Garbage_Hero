@@ -6,6 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     // Rate at which something spawns
     float spawnRate = 5f;
+    float startTime;
 
     [SerializeField]
     // Array of all spawnable objects
@@ -17,6 +18,7 @@ public class SpawnManager : MonoBehaviour
     void Start(){
         // Start the spawning routine
         StartCoroutine(SpawnObjects());
+        startTime = Time.time;
     }
 
     IEnumerator SpawnObjects()
@@ -24,7 +26,7 @@ public class SpawnManager : MonoBehaviour
         while(true){
             // Pick a prefab to spawn
             int choice = Random.Range(1, 11); //random has an exclusive upper end, so if you want 10 to be an option must end with 11
-
+            if (Time.time - startTime < 8f) choice = 1; //for first 8 seconds, just spawn trash
             // 60% chance to spawn trash
             int prefabChoice = 0;
             // 30% chance to spawn an enemy

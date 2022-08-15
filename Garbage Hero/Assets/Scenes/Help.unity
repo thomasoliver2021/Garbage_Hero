@@ -632,7 +632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -310, y: -86}
+  m_AnchoredPosition: {x: -310, y: -115}
   m_SizeDelta: {x: 432.5418, y: 98.95621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566015212
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pick up nearby trash by pressing 'space'
+  m_text: 'Pick up nearby trash by pressing LMB '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 492c5b053d74f8745a03f09ac557adc5, type: 2}
   m_sharedMaterial: {fileID: -3312138237606921957, guid: 492c5b053d74f8745a03f09ac557adc5, type: 2}
@@ -891,7 +891,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Shoot trash clumps by pressing LMB
+  m_text: Shoot trash clumps by pressing 'SPACE'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 492c5b053d74f8745a03f09ac557adc5, type: 2}
   m_sharedMaterial: {fileID: -3312138237606921957, guid: 492c5b053d74f8745a03f09ac557adc5, type: 2}
@@ -1460,7 +1460,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 272, y: -86}
+  m_AnchoredPosition: {x: 272, y: -115}
   m_SizeDelta: {x: 432.5418, y: 98.95621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2137836746

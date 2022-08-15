@@ -10,6 +10,8 @@ public class BarrierControl : MonoBehaviour
     [SerializeField] Sprite[] shotSprites;
     [SerializeField]
     AudioClip fireTrash;
+    [SerializeField]
+    GameObject textprompt;
 
     List<SpriteRenderer[]> bullets;
 
@@ -32,6 +34,7 @@ public class BarrierControl : MonoBehaviour
         shootDirections = new List<Vector2>();
 
         startTime = Time.realtimeSinceStartup;
+        textprompt.SetActive(false);
     }
 
     void Update()
@@ -63,6 +66,10 @@ public class BarrierControl : MonoBehaviour
                 GetComponent<AudioSource>().clip = fireTrash;
                 GetComponent<AudioSource>().Play();
                 shooting = true;
+            }
+            else
+            {
+                StartCoroutine(PromptUser());
             }
         }
 
@@ -119,5 +126,12 @@ public class BarrierControl : MonoBehaviour
             GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier = trashInBarrier.Count;
             GetComponent<PlayerDamagedBehavior>().updateColliderSize();
         }
+    }
+
+    IEnumerator PromptUser()
+    {
+        textprompt.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        textprompt.SetActive(false);
     }
 }
