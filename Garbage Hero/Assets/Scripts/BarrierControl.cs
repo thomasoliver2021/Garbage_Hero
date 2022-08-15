@@ -9,7 +9,9 @@ public class BarrierControl : MonoBehaviour
     GameObject player;
     [SerializeField] Sprite[] shotSprites;
 
-    Vector2 shootDirection;
+    List<SpriteRenderer[]> bullets;
+
+    List<Vector2> shootDirections;
 
     bool shooting = false;
     bool shot = false;
@@ -22,6 +24,8 @@ public class BarrierControl : MonoBehaviour
 
         trashInBarrier = new List<SpriteRenderer>();
         toShoot = new SpriteRenderer[3];
+        bullets = new List<SpriteRenderer[]>();
+        shootDirections = new List<Vector2>();
     }
 
     void Update()
@@ -50,8 +54,8 @@ public class BarrierControl : MonoBehaviour
                     toShoot[i].sprite = shotSprites[(int)char.GetNumericValue(toShoot[i].sprite.name[6])];
                     trashInBarrier.RemoveAt(trashInBarrier.Count - 1);
                 }
+                shooting = true;
             }
-            shooting = true;
         }
 
         if(shooting){
@@ -60,15 +64,23 @@ public class BarrierControl : MonoBehaviour
             }
             if(toShoot[0].transform.position.x == toShoot[1].transform.position.x &&
                toShoot[1].transform.position.x == toShoot[2].transform.position.x){
-                shootDirection = player.transform.up;
+                SpriteRenderer[] bullet = new SpriteRenderer[3];
+                for(int i = 0; i < 3; i++){
+                    bullet[i] = toShoot[i];
+                    toShoot[i] = null;
+                }
+                bullets.Add(bullet);
+                shootDirections.Add(player.transform.up);
                 shooting = false;
                 shot = true;
             }
         }
 
         if(shot){
-            foreach(var trash in toShoot){
-                trash.transform.Translate(shootDirection * Time.deltaTime * shootSpeed, Space.World);
+            for(int i = 0; i < bullets.Count; i++){
+                foreach(var bullet in bullets[i]){
+                    bullet.transform.Translate(shootDirections[i] * Time.deltaTime * shootSpeed, Space.World);
+                }
             }
         }
 
