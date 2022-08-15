@@ -10,6 +10,8 @@ public class PlayerDamagedBehavior : MonoBehaviour
     CircleCollider2D circleCollider;
     private int livesLeft;
 
+    float barrierSize = 1.0f;
+
     public int numOfTrashInBarrier;
 
     [SerializeField]
@@ -26,6 +28,8 @@ public class PlayerDamagedBehavior : MonoBehaviour
     AudioClip damagesfx;
     [SerializeField]
     TextMeshProUGUI livestext;
+    [SerializeField] SpriteRenderer bubble;
+
 
     void Start()
     {
@@ -83,12 +87,15 @@ public class PlayerDamagedBehavior : MonoBehaviour
     public void updateColliderSize(){
         if(numOfTrashInBarrier == 0){
             circleCollider.radius = 0.08f;
+            bubble.enabled = false;
         }
         else{
             circleCollider.radius = 0.2f;
+            bubble.enabled = true;
             for(int i = 0; i < numOfTrashInBarrier - 1; i++){
                 circleCollider.radius += 0.02f;
             }
+            bubble.transform.localScale = new Vector2(barrierSize + (circleCollider.radius * 2.0f), barrierSize + (circleCollider.radius * 2.0f));
         }
     }
 
