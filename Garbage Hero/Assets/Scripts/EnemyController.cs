@@ -48,14 +48,18 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
-        if (!player) return;
+        if (!player || player.GetComponent<SpriteRenderer>().enabled == false)
+        {
+            CancelInvoke("FireLaser"); 
+            currentlyShooting = false;
+        }
         SetDistance();
         gameObject.transform.up = player.transform.position - gameObject.transform.position;
         if (!inStoppingRange) MoveTowardsPlayer();
         else if(rigidBody.velocity.magnitude > 0) SlowMovement();
 
-        //if (inShootingRange && !currentlyShooting) { InvokeRepeating("FireLaser", 0.5f, 1.5f); currentlyShooting = true; }
-        //else if (!inShootingRange && currentlyShooting) { CancelInvoke("FireLaser"); currentlyShooting = false; }
+        if (inShootingRange && !currentlyShooting) { InvokeRepeating("FireLaser", 0.5f, 1.5f); currentlyShooting = true; }
+        else if (!inShootingRange && currentlyShooting) { CancelInvoke("FireLaser"); currentlyShooting = false; }
     }
 
     void SetDistance()
@@ -78,6 +82,7 @@ public class EnemyController : MonoBehaviour
 
     void FireLaser()
     {
+        GetComponent<AudioSource>().Play();
         Instantiate(laserPrefab, rigidBody.transform.position + rigidBody.transform.up * 0.12f, rigidBody.transform.rotation);
     }
 

@@ -18,6 +18,8 @@ public class PlayerDamagedBehavior : MonoBehaviour
     ScoreTracker scoreTracker;
     [SerializeField]
     GameObject gameOverText;
+    [SerializeField]
+    AudioClip damagesfx;
 
     void Start()
     {
@@ -28,6 +30,9 @@ public class PlayerDamagedBehavior : MonoBehaviour
 
     void TakeDamage()
     {
+        GetComponent<AudioSource>().clip = damagesfx;
+        GetComponent<AudioSource>().Play();
+        
         //handle collision to garbage if any
 
         livesLeft--;
