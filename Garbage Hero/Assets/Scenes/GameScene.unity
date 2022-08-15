@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 324959224}
   - component: {fileID: 324959226}
   - component: {fileID: 324959229}
+  - component: {fileID: 324959230}
   - component: {fileID: 324959228}
   - component: {fileID: 324959227}
   - component: {fileID: 324959230}
@@ -340,6 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5093ee7d05c9ef41904bfa20771e5ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  numOfTrashInBarrier: 0
   normalPlayer: {fileID: 21300000, guid: 3a9687c4d60c96c4ba1475f95b37b3c1, type: 3}
   damagedPlayer: {fileID: 21300000, guid: 4d0ecbd66ef34e247b4f9624cc481420, type: 3}
   explosionPrefab: {fileID: 248642364822509408, guid: be33c40e49832c34d9c36374b33ccb96, type: 3}

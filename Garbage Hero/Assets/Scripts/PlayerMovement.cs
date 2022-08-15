@@ -10,11 +10,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        speed = 0.7f;
+        speed = 0.9f;
         stopped = false;
         GetComponent<SpriteRenderer>().enabled = true;
     }
-
     void Update(){
         if (stopped) return;
 

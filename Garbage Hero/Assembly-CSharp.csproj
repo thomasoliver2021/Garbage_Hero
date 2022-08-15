@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\PopupItems.cs" />
     <Compile Include="Assets\ScrollStory.cs" />
     <Compile Include="Assets\Scripts\SkipScroll.cs" />
+    <Compile Include="Assets\Scripts\BarrierControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

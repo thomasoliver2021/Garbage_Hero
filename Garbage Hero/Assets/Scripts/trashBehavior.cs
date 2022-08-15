@@ -11,20 +11,29 @@ public class TrashBehavior : MonoBehaviour
     float moveSpeed = 0.2f;
 
     // Direction trash moves in
-    private Vector2 movementDirection;
+    Vector2 movementDirection;
+    bool grabbed;
+    bool scattered;
+    float grabbingRange = 0.5f;
+    GameObject player;
 
-    
-    [SerializeField]
+    int spriteTexture;
+    SpriteRenderer spriteRenderer;
+    float opacity = 1.0f;
+
     // Array of trash sprites
-    Sprite[] trashSprites;
+    [SerializeField] Sprite[] trashSprites;
+    [SerializeField] Sprite[] grabbedTrashSprites;
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
+
         // Pick a random trash to be
-        int spriteTexture = Random.Range(0, trashSprites.Length);
+        spriteTexture = Random.Range(0, trashSprites.Length);
 
         // Set sprite
-        SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = trashSprites[spriteTexture];
 
         // Randomize rotation speed
@@ -45,7 +54,52 @@ public class TrashBehavior : MonoBehaviour
         // Slowly rotate
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
         
-        transform.Translate(movementDirection * Time.deltaTime * moveSpeed, Space.World);
+        if(grabbed){
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 15);
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance < 0.005){
+                moveToBarrier();
+            }
+        }
 
+        if(scattered){
+            transform.Translate(movementDirection * Time.deltaTime * moveSpeed * 50, Space.World);
+            if(opacity < 0.001f){
+                Destroy(gameObject);
+            }
+            spriteRenderer.color = new Color(1.0f, 1.0f, 1.0f, opacity);
+            opacity -= 0.005f;
+        }
+
+        else{
+            transform.Translate(movementDirection * Time.deltaTime * moveSpeed, Space.World);
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance < grabbingRange && !grabbed && !scattered){
+                grabbed = true;
+                spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];
+            }
+        }
+    }
+
+    void moveToBarrier(){
+        player.GetComponent<BarrierControl>().addTrashToArray(spriteRenderer);
+        enabled = false;
+    }
+
+    public void Scatter(){
+        spriteRenderer.sprite = trashSprites[spriteTexture];
+        movementDirection = -(player.transform.position - transform.position);
+        grabbed = false;
+        scattered = true;
+        enabled = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "enemy") collision.gameObject.SendMessage("OnTrashHit");
     }
 }

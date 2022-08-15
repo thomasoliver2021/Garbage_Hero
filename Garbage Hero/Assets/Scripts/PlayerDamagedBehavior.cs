@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class PlayerDamagedBehavior : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    CircleCollider2D circleCollider;
     private int livesLeft;
+
+    public int numOfTrashInBarrier;
 
     [SerializeField]
     Sprite normalPlayer;
@@ -24,7 +27,9 @@ public class PlayerDamagedBehavior : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider = GetComponent<CircleCollider2D>();
         livesLeft = 3;
+        numOfTrashInBarrier = 0;
         gameOverText.SetActive(false);
     }
 
@@ -44,13 +49,48 @@ public class PlayerDamagedBehavior : MonoBehaviour
     {
         if(collision.collider.tag == "enemy")
         {
-            TakeDamage();
+            if(numOfTrashInBarrier >= 1){
+                GetComponent<BarrierControl>().scatterTrash(1);
+            }
+            else{
+                TakeDamage();
+            }
+        }
+        if(collision.collider.tag == "laser")
+        {
+            if(numOfTrashInBarrier >= 1){
+                GetComponent<BarrierControl>().scatterTrash(2);
+            }
+            else{
+                TakeDamage();
+            }
+        }
+        if(collision.collider.tag == "asteroid")
+        {
+            if(numOfTrashInBarrier >= 1){
+                GetComponent<BarrierControl>().scatterTrash(3);
+            }
+            else{
+                TakeDamage();
+            }
         }
     }
 
     void OnLaserBulletHit()
     {
         TakeDamage();
+    }
+
+    public void updateColliderSize(){
+        if(numOfTrashInBarrier == 0){
+            circleCollider.radius = 0.08f;
+        }
+        else{
+            circleCollider.radius = 0.2f;
+            for(int i = 0; i < numOfTrashInBarrier - 1; i++){
+                circleCollider.radius += 0.02f;
+            }
+        }
     }
 
     IEnumerator FlashRed()
