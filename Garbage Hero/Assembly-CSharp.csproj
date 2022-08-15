@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ShowLeaderboard.cs" />
+    <Compile Include="Assets\Scripts\PopupItems.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

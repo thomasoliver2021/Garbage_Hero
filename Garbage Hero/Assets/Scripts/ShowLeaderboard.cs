@@ -14,10 +14,62 @@ public class ShowLeaderboard : MonoBehaviour
     TextMeshProUGUI playerScores;
     [SerializeField]
     TextMeshProUGUI userID;
+    [SerializeField]
+    TMP_InputField inputField;
+    [SerializeField]
+    GameObject popup;
 
     private void Start()
     {
-        StartCoroutine(FetchTopScores());
+        if(PlayerPrefs.HasKey("PlayerID")) StartCoroutine(FetchTopScores());
+        if(PlayerPrefs.HasKey("PlayerID")) StartCoroutine(FetchUsername());
+        HidePlayerNameSetup();
+    }
+
+    public void ShowPlayerNameSetup()
+    {
+        popup.SetActive(true);
+    }
+
+    public void HidePlayerNameSetup()
+    {
+        popup.SetActive(false);
+    }
+
+    public void SetPlayerName()
+    {
+        LootLockerSDKManager.SetPlayerName(inputField.text, (response) =>
+        {
+            if (response.success)
+            {
+                Debug.Log("successfully updated player name");
+                StartCoroutine(FetchTopScores());
+                StartCoroutine(FetchUsername());
+            }
+            else Debug.Log("failed: " + response.Error);
+        });
+    }
+
+    public IEnumerator FetchUsername()
+    {
+        bool done = false;
+
+        LootLockerSDKManager.GetMemberRank(leaderboardID, PlayerPrefs.GetString("PlayerID"), (response) =>
+        {
+            if (response.success)
+            {
+
+                userID.text = "playing as: ";
+                userID.text += (response.player.name != "") ? response.player.name : "anon " + response.player.id;
+            }
+            else
+            {
+                Debug.Log("Failed: " + response.Error);
+                done = true;
+            }
+        });
+
+        yield return new WaitWhile(() => done == false);
     }
 
     public IEnumerator FetchTopScores()
@@ -41,7 +93,6 @@ public class ShowLeaderboard : MonoBehaviour
                 done = true;
                 playerNames.text = tempNames;
                 playerScores.text = tempScores;
-                userID.text = "playing as: anon " + PlayerPrefs.GetString("PlayerID");
             }
             else
             {
