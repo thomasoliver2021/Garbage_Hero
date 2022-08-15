@@ -10,7 +10,7 @@ public class AsteroidBehavior : MonoBehaviour
     private float speed;
     private Vector2 movementDirection;
     private int asteroidType;
-    //private bool 
+    private float startTime;
 
     [SerializeField]
     Sprite[] sprites;
@@ -30,13 +30,15 @@ public class AsteroidBehavior : MonoBehaviour
         if (player) gameObject.transform.up = player.transform.position - gameObject.transform.position;
         gameObject.transform.Rotate(0, 0, Random.Range(-20, 20));
         movementDirection = gameObject.transform.up;
+
+        startTime = Time.realtimeSinceStartup;
     }
 
     void Update()
     {
         gameObject.transform.Translate(movementDirection * Time.deltaTime * speed, Space.World);
         gameObject.transform.Rotate(Vector3.forward * Time.deltaTime * speed * 100);
-        // if (!renderer.isVisible) Destroy(gameObject);
+        if (!renderer.isVisible && Time.realtimeSinceStartup - startTime > 5f) Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
