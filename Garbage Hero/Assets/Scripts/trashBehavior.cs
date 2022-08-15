@@ -53,8 +53,8 @@ public class TrashBehavior : MonoBehaviour
         
         if(grabbed){
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 15);
-            float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
-            if (distance < 0.05){
+            float distance = Vector2.Distance(transform.position, player.transform.position);
+            if (distance < 0.005){
                 moveToBarrier();
             }
         }
@@ -64,7 +64,7 @@ public class TrashBehavior : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            float distance = Vector2.Distance(gameObject.transform.position, player.transform.position);
+            float distance = Vector2.Distance(transform.position, player.transform.position);
             if (distance < grabbingRange && !grabbed){
                 grabbed = true;
                 spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];

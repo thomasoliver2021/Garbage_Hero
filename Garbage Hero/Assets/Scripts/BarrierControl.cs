@@ -9,10 +9,12 @@ public class BarrierControl : MonoBehaviour
     GameObject player;
     [SerializeField] Sprite[] shotSprites;
 
+    Vector2 shootDirection;
+
     bool shooting = false;
     bool shot = false;
 
-    float shootSpeed = 0.2f;
+    float shootSpeed = 1.5f;
 
     void Start()
     {
@@ -55,6 +57,18 @@ public class BarrierControl : MonoBehaviour
         if(shooting){
             foreach(var trash in toShoot){
                 trash.transform.position = Vector2.MoveTowards(trash.transform.position, player.transform.position, shootSpeed / 15);
+            }
+            if(toShoot[0].transform.position.x == toShoot[1].transform.position.x &&
+               toShoot[1].transform.position.x == toShoot[2].transform.position.x){
+                shootDirection = player.transform.up;
+                shooting = false;
+                shot = true;
+            }
+        }
+
+        if(shot){
+            foreach(var trash in toShoot){
+                trash.transform.Translate(shootDirection * Time.deltaTime * shootSpeed, Space.World);
             }
         }
 
