@@ -8,6 +8,8 @@ public class BarrierControl : MonoBehaviour
     SpriteRenderer[] toShoot;
     GameObject player;
     [SerializeField] Sprite[] shotSprites;
+    [SerializeField]
+    AudioClip fireTrash;
 
     List<SpriteRenderer[]> bullets;
 
@@ -54,6 +56,8 @@ public class BarrierControl : MonoBehaviour
                     toShoot[i].sprite = shotSprites[(int)char.GetNumericValue(toShoot[i].sprite.name[6])];
                     trashInBarrier.RemoveAt(trashInBarrier.Count - 1);
                 }
+                GetComponent<AudioSource>().clip = fireTrash;
+                GetComponent<AudioSource>().Play();
                 shooting = true;
             }
         }

@@ -63,16 +63,16 @@
     <Compile Include="Assets\Scripts\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\TrashBehavior.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\PopupItems.cs" />
     <Compile Include="Assets\Scripts\AsteroidBehavior.cs" />
+    <Compile Include="Assets\Scripts\SkipScroll.cs" />
+    <Compile Include="Assets\Scripts\ShowLeaderboard.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\ShowLeaderboard.cs" />
-    <Compile Include="Assets\Scripts\PopupItems.cs" />
-    <Compile Include="Assets\ScrollStory.cs" />
-    <Compile Include="Assets\Scripts\SkipScroll.cs" />
     <Compile Include="Assets\Scripts\BarrierControl.cs" />
+    <Compile Include="Assets\ScrollStory.cs" />
+    <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -43,7 +43,6 @@ public class TrashBehavior : MonoBehaviour
             rotationSpeed += 10;
             rotationSpeed *= -1;
         }
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player) movementDirection = player.transform.position - gameObject.transform.position;
         else movementDirection = gameObject.transform.up;
 

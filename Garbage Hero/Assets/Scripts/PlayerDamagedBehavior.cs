@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerDamagedBehavior : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class PlayerDamagedBehavior : MonoBehaviour
     GameObject gameOverText;
     [SerializeField]
     AudioClip damagesfx;
+    [SerializeField]
+    TextMeshProUGUI livestext;
 
     void Start()
     {
@@ -41,6 +44,7 @@ public class PlayerDamagedBehavior : MonoBehaviour
         //handle collision to garbage if any
 
         livesLeft--;
+        livestext.text = "lives: " + livesLeft;
         if (livesLeft > 0) StartCoroutine(FlashRed());
         else StartCoroutine(Die());
     }

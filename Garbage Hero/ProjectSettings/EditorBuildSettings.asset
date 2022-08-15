@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoryScroll.unity
     guid: 2788aa37ec59e474ebf8e2ee54550d77
+  - enabled: 1
+    path: Assets/Scenes/Info.unity
+    guid: 24ac50062d00a054e90fb5fb8a74cd92
   m_configObjects: {}
