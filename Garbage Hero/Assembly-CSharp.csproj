@@ -58,14 +58,17 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerDamagedBehavior.cs" />
     <Compile Include="Assets\Scripts\ExplosionBehavior.cs" />
+    <Compile Include="Assets\Scripts\ScoreTracker.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\TrashBehavior.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\AsteroidBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-    <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
-    <Compile Include="Assets\Scripts\ChangeScene.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\LaserBulletBehavior.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\ShowLeaderboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -855,6 +858,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="lootlocker.lootlockersdk.runtime.csproj">
+      <Project>{61790D67-30C3-DC9E-1319-50970E9B3ADF}</Project>
+      <Name>lootlocker.lootlockersdk.runtime</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     private GameObject player;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidBody;
+    private ScoreTracker scoreTracker;
 
     private float speed;
     private float distanceToPlayer;
@@ -29,6 +30,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
         rigidBody = GetComponent<Rigidbody2D>();
+        scoreTracker = GameObject.FindGameObjectWithTag("GameController").GetComponent<ScoreTracker>();
 
         enemyType = Random.Range(0, 2);
         if (enemyType == 0) spriteRenderer.sprite = sprites[0];
@@ -41,11 +43,12 @@ public class EnemyController : MonoBehaviour
         inStoppingRange = false;
         inShootingRange = false;
         currentlyShooting = false;
-        SetDistance();
+        if(player) SetDistance();
     }
     
     void Update()
     {
+        if (!player) return;
         SetDistance();
         gameObject.transform.up = player.transform.position - gameObject.transform.position;
         if (!inStoppingRange) MoveTowardsPlayer();
@@ -93,11 +96,13 @@ public class EnemyController : MonoBehaviour
 
     public void OnTrashHit()
     {
+        scoreTracker.updateScore(1);
         Die();
     }
 
     public void OnAstroidHit()
     {
+        scoreTracker.updateScore(3);
         Die();
     }
 }

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lootlocker.lootlockersdk.runtime", "lootlocker.lootlockersdk.runtime.csproj", "{61790D67-30C3-DC9E-1319-50970E9B3ADF}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{B0734C00-4993-4019-0B92-5457A139A5E6}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61790D67-30C3-DC9E-1319-50970E9B3ADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61790D67-30C3-DC9E-1319-50970E9B3ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61790D67-30C3-DC9E-1319-50970E9B3ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61790D67-30C3-DC9E-1319-50970E9B3ADF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B0734C00-4993-4019-0B92-5457A139A5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B0734C00-4993-4019-0B92-5457A139A5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0734C00-4993-4019-0B92-5457A139A5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU

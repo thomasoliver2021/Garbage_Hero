@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerDamagedBehavior : MonoBehaviour
 {
@@ -13,11 +14,16 @@ public class PlayerDamagedBehavior : MonoBehaviour
     Sprite damagedPlayer;
     [SerializeField]
     GameObject explosionPrefab;
+    [SerializeField]
+    ScoreTracker scoreTracker;
+    [SerializeField]
+    GameObject gameOverText;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         livesLeft = 3;
+        gameOverText.SetActive(false);
     }
 
     void TakeDamage()
@@ -59,9 +65,14 @@ public class PlayerDamagedBehavior : MonoBehaviour
 
     IEnumerator Die()
     {
+        GetComponent<PlayerMovement>().StopPlayer();
+        gameOverText.SetActive(true);
         spriteRenderer.sprite = damagedPlayer;
         yield return new WaitForSeconds(0.4f);
         Instantiate(explosionPrefab, gameObject.transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        spriteRenderer.enabled = false;
+        yield return scoreTracker.SubmitScoreToLeaderboard();
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("HighScores");
     }
 }

@@ -26,7 +26,8 @@ public class AsteroidBehavior : MonoBehaviour
 
         speed = Random.Range(0.1f, 0.4f);
 
-        gameObject.transform.up = GameObject.FindGameObjectWithTag("Player").transform.position - gameObject.transform.position;
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player) gameObject.transform.up = player.transform.position - gameObject.transform.position;
         gameObject.transform.Rotate(0, 0, Random.Range(-20, 20));
         movementDirection = gameObject.transform.up;
     }
