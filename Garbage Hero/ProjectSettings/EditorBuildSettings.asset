@@ -18,6 +18,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Help.unity
     guid: 6ae62f3d823325c4cafe191573e605ef
   - enabled: 1
-    path: Assets/Scenes/Info.unity
-    guid: 0ed49acb5c60a1d49ba5d3698d2e6d07
+    path: Assets/Scenes/StoryScroll.unity
+    guid: 2788aa37ec59e474ebf8e2ee54550d77
   m_configObjects: {}

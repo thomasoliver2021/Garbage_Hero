@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ShowLeaderboard.cs" />
     <Compile Include="Assets\Scripts\PopupItems.cs" />
+    <Compile Include="Assets\ScrollStory.cs" />
+    <Compile Include="Assets\Scripts\SkipScroll.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
