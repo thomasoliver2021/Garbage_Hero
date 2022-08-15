@@ -86,16 +86,16 @@ public class PlayerDamagedBehavior : MonoBehaviour
 
     public void updateColliderSize(){
         if(numOfTrashInBarrier == 0){
-            circleCollider.radius = 0.08f;
+            circleCollider.radius = spriteRenderer.bounds.size.x / 2.0f;
             bubble.enabled = false;
         }
         else{
-            circleCollider.radius = 0.2f;
+            circleCollider.radius = spriteRenderer.bounds.size.x * 2.0f;
             bubble.enabled = true;
             for(int i = 0; i < numOfTrashInBarrier - 1; i++){
-                circleCollider.radius += 0.02f;
+                circleCollider.radius += (spriteRenderer.bounds.size.x / 16.0f);
             }
-            bubble.transform.localScale = new Vector2(barrierSize + (circleCollider.radius * 2.0f), barrierSize + (circleCollider.radius * 2.0f));
+            bubble.transform.localScale = new Vector2(barrierSize + (circleCollider.radius * 2.7f), barrierSize + (circleCollider.radius * 2.7f));
         }
     }
 

@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 6923927723073220417}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.225, y: -0.683, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f859bcc75bd5c64795e775fe1c4417e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagedSprite: {fileID: 21300000, guid: 3251d1fb55dc59c4c8bfaa2588d945e7, type: 3}
+  sprites: []
   explosionPrefab: {fileID: 248642364822509408, guid: be33c40e49832c34d9c36374b33ccb96, type: 3}
   laserPrefab: {fileID: 5447597299093554190, guid: 6c191a533aa6749428fd957e76797daa, type: 3}
 --- !u!50 &6923927723073220419

@@ -6,12 +6,14 @@ public class BarrierControl : MonoBehaviour
 {
     List<SpriteRenderer> trashInBarrier;
     SpriteRenderer[] toShoot;
+    
     GameObject player;
     [SerializeField] Sprite[] shotSprites;
     [SerializeField]
     AudioClip fireTrash;
     [SerializeField]
     GameObject textprompt;
+
 
     List<SpriteRenderer[]> bullets;
 
@@ -103,9 +105,9 @@ public class BarrierControl : MonoBehaviour
                     bullets[i][2].GetComponent<TrashBehavior>().Shoot();
                     bullets.RemoveAt(i);
                     shootDirections.RemoveAt(i);
+                    player.GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier -= 3;
+                    player.GetComponent<PlayerDamagedBehavior>().updateColliderSize();
                 }
-                player.GetComponent<PlayerDamagedBehavior>().numOfTrashInBarrier = bullets.Count * 3;
-                player.GetComponent<PlayerDamagedBehavior>().updateColliderSize();
             }
         }
 
