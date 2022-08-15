@@ -20,6 +20,7 @@ public class TrashBehavior : MonoBehaviour
     int spriteTexture;
     SpriteRenderer spriteRenderer;
     float opacity = 1.0f;
+    private float startTime;
 
     // Array of trash sprites
     [SerializeField] Sprite[] trashSprites;
@@ -46,12 +47,14 @@ public class TrashBehavior : MonoBehaviour
         if (player) movementDirection = player.transform.position - gameObject.transform.position;
         else movementDirection = gameObject.transform.up;
 
+        startTime = Time.realtimeSinceStartup;
     }
 
     void Update()
     {
         // Slowly rotate
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
+        if (!spriteRenderer.isVisible && Time.realtimeSinceStartup - startTime > 5f) Destroy(gameObject);
         
         if(grabbed){
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 15);
