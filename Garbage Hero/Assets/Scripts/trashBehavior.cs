@@ -76,4 +76,9 @@ public class TrashBehavior : MonoBehaviour
         player.GetComponent<BarrierControl>().addTrashToArray(spriteRenderer);
         enabled = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "enemy") collision.gameObject.SendMessage("OnTrashHit");
+    }
 }

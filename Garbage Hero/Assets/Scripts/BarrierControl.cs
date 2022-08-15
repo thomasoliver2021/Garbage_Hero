@@ -69,6 +69,7 @@ public class BarrierControl : MonoBehaviour
                     bullet[i] = toShoot[i];
                     toShoot[i] = null;
                 }
+                bullet[1].gameObject.AddComponent<BoxCollider2D>();
                 bullets.Add(bullet);
                 shootDirections.Add(player.transform.up);
                 shooting = false;
@@ -89,5 +90,12 @@ public class BarrierControl : MonoBehaviour
     public void addTrashToArray(SpriteRenderer newTrash){
         // Add trash from space into the barrier
         trashInBarrier.Add(newTrash);
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "enemy"){
+            collision.gameObject.SendMessage("OnTrashHit");
+        }
     }
 }
