@@ -14,6 +14,7 @@ public class TrashBehavior : MonoBehaviour
     Vector2 movementDirection;
     bool grabbed;
     bool scattered;
+    bool shot;
     float grabbingRange = 0.5f;
     GameObject player;
 
@@ -54,7 +55,7 @@ public class TrashBehavior : MonoBehaviour
     {
         // Slowly rotate
         transform.Rotate(Vector3.forward * Time.deltaTime * rotationSpeed);
-        if (!spriteRenderer.isVisible && Time.realtimeSinceStartup - startTime > 5f) Destroy(gameObject);
+        if (!spriteRenderer.isVisible && Time.realtimeSinceStartup - startTime > 3f) Destroy(gameObject);
         
         if(grabbed){
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed / 15);
@@ -80,7 +81,7 @@ public class TrashBehavior : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             float distance = Vector2.Distance(transform.position, player.transform.position);
-            if (distance < grabbingRange && !grabbed && !scattered){
+            if (distance < grabbingRange && !grabbed && !scattered && !shot){
                 grabbed = true;
                 spriteRenderer.sprite = grabbedTrashSprites[spriteTexture];
             }
@@ -95,9 +96,15 @@ public class TrashBehavior : MonoBehaviour
     public void Scatter(){
         spriteRenderer.sprite = trashSprites[spriteTexture];
         movementDirection = -(player.transform.position - transform.position);
-        grabbed = false;
         scattered = true;
         enabled = true;
+        grabbed = false;
+    }
+
+    public void Shoot(){
+        shot = true;
+        enabled = true;
+        grabbed = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -20,6 +20,8 @@ public class BarrierControl : MonoBehaviour
 
     float shootSpeed = 1.5f;
 
+    private float startTime;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -28,6 +30,8 @@ public class BarrierControl : MonoBehaviour
         toShoot = new SpriteRenderer[3];
         bullets = new List<SpriteRenderer[]>();
         shootDirections = new List<Vector2>();
+
+        startTime = Time.realtimeSinceStartup;
     }
 
     void Update()
@@ -86,6 +90,13 @@ public class BarrierControl : MonoBehaviour
                 foreach(var bullet in bullets[i]){
                     bullet.transform.Translate(shootDirections[i] * Time.deltaTime * shootSpeed, Space.World);
                 }
+                if (!bullets[i][1].isVisible && Time.realtimeSinceStartup - startTime > 5f){
+                    bullets[i][0].GetComponent<TrashBehavior>().Shoot();
+                    bullets[i][1].GetComponent<TrashBehavior>().Shoot();
+                    bullets[i][2].GetComponent<TrashBehavior>().Shoot();
+                    bullets.RemoveAt(i);
+                }
+
             }
         }
 
